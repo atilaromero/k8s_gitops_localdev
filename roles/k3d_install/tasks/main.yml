@@ -1,0 +1,7 @@
+---
+- name: Install k3d
+  get_url:
+    url: https://github.com/rancher/k3d/releases/download/v3.4.0/k3d-linux-amd64
+    dest: /usr/local/bin/k3d
+    mode: '0555'
+    checksum: md5:e47b4a24e9c0f13187e3451224704a95

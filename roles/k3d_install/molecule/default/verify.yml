@@ -1,0 +1,16 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: no
+  roles:
+    - k3d_install
+  tasks:
+    - name: Get version
+      command: k3d version
+      register: result
+
+    - name: Assert version
+      assert:
+        that: '"{{ result.stdout_lines[0] }}" == "k3d version v3.4.0"'

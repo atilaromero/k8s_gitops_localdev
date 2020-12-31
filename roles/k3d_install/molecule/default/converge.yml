@@ -1,0 +1,8 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: "Include k3d_install"
+      include_role:
+        name: "k3d_install"
