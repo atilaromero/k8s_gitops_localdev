@@ -1,0 +1,8 @@
+---
+- name: Create
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Create test cluster
+      command: k3d cluster create {{ cluster_name }}

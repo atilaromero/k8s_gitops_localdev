@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - debug:
+        var: cluster_name
+    - name: "Include argocd_install"
+      include_role:
+        name: "argocd_install"

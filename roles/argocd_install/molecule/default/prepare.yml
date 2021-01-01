@@ -1,0 +1,14 @@
+---
+- name: Create
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Generate kubeconfig content
+      command: k3d kubeconfig get {{ cluster_name }}
+      register: result
+    
+    - name: Save new kubeconfig
+      copy:
+        content: "{{result.stdout}}" 
+        dest: "{{ kubeconfig }}"

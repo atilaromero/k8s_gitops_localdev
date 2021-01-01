@@ -1,0 +1,18 @@
+---
+- name: Add namespace
+  community.kubernetes.k8s:
+    name: '{{ namespace }}'
+    api_version: v1
+    kind: Namespace
+    state: present
+
+- name: Get ArgoCD k8s yaml
+  get_url:
+    url: https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+    dest: /tmp/argocd.yaml
+    checksum: sha1:bb604abaa6ca75735c838b821b43624fac12a161
+
+- name: Install ArgoCD
+  community.kubernetes.k8s:
+    namespace: '{{ namespace }}'
+    src: /tmp/argocd.yaml
