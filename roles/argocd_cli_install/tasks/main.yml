@@ -1,0 +1,7 @@
+---
+- name: Get argocd CLI binary
+  get_url:
+    url: https://github.com/argoproj/argo-cd/releases/download/{{ argocd_version }}/argocd-linux-amd64
+    dest: /usr/local/bin/argocd
+    mode: '0555'
+    checksum: sha256:4250362862d9be3bdaea2ba775e3b3faf81b87f67773b9a67802aa9114de09a1
