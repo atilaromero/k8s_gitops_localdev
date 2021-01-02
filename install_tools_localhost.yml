@@ -1,0 +1,6 @@
+- hosts: localhost
+  connection: local
+  roles:
+    - k3d_install
+    - argocd_cli_install
+    - helm_cli_install
