@@ -3,5 +3,5 @@
   connection: local
   gather_facts: no
   roles:
-    - role: argocd_install
+    - role: argocd_k8s_install
       namespace: argocd
