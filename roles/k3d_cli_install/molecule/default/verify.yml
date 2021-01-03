@@ -7,10 +7,5 @@
   roles:
     - k3d_install
   tasks:
-    - name: Get version
+    - name: check if k3d binary runs without error
       command: k3d version
-      register: result
-
-    - name: Assert version
-      assert:
-        that: '"{{ result.stdout_lines[0] }}" == "k3d version v3.4.0"'
