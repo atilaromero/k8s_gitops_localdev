@@ -1,0 +1,9 @@
+---
+- name: Install pip packages
+  pip:
+    name:
+      - pip
+      - ansible
+      - molecule[docker,lint]
+      - openshift
+    state: latest

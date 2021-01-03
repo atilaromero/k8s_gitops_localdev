@@ -1,0 +1,8 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: "Include ansible_k8s_requirements"
+      include_role:
+        name: "ansible_k8s_requirements"
