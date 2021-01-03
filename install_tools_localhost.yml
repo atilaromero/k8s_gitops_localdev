@@ -2,6 +2,6 @@
   connection: local
   roles:
     - local_requirements
-    - k3d_install
+    - k3d_cli_install
     - argocd_cli_install
     - helm_cli_install
