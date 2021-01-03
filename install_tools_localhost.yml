@@ -1,7 +1,7 @@
 - hosts: localhost
   connection: local
   roles:
-    - ansible_k8s_requirements
+    - local_requirements
     - k3d_install
     - argocd_cli_install
     - helm_cli_install
