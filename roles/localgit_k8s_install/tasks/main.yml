@@ -1,0 +1,17 @@
+---
+- name: Add namespace
+  community.kubernetes.k8s:
+    name: '{{ namespace }}'
+    api_version: v1
+    kind: Namespace
+    state: present
+
+- name: Install local git server deployment
+  community.kubernetes.k8s:
+    namespace: '{{ namespace }}'
+    src: '{{ role_path }}/../../k8s_resources/local-git-server/deployment.yml'
+
+- name: Install local git server service
+  community.kubernetes.k8s:
+    namespace: '{{ namespace }}'
+    src: '{{ role_path }}/../../k8s_resources/local-git-server/svc.yml'

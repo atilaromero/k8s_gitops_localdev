@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - debug:
+        var: cluster_name
+    - name: "Include localgit_k8s_install"
+      include_role:
+        name: "localgit_k8s_install"

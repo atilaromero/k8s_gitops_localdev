@@ -1,0 +1,8 @@
+---
+- name: Destroy
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Delete test cluster
+      command: k3d cluster delete {{ cluster_name }}
