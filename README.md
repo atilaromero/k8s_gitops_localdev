@@ -14,7 +14,7 @@ Ansible will install the basic system:
 
 2. Install ArgoCD in the cluster 
 
-3. Export the local k8s_git_ops_localdev repository in the cluster, creating a read-only git server
+3. Export the local k8s_gitops_localdev repository in the cluster, creating a read-only git server
 
 4. Make ArgoCD watch the local repo
 
