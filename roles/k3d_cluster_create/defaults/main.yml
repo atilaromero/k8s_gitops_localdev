@@ -1,0 +1,5 @@
+shared_dir: '{{ role_path }}/../..'
+
+# kubeconfig is the path for the local kube/config file
+# if set, it will be overwritten
+#kubeconfig: ${HOME}/.kube/config

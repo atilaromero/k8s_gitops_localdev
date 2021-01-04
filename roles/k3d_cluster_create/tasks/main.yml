@@ -1,0 +1,22 @@
+---
+- name: List clusters
+  shell: k3d cluster list | cut -d ' ' -f 1
+  changed_when: no
+  register: result
+
+- name: Create cluster
+  command: k3d cluster create {{ cluster_name }} -v {{ shared_dir }}:/mnt/hostpath
+  when: cluster_name not in result.stdout_lines
+
+- name: Generate kubeconfig content
+  when: kubeconfig is defined
+  command: k3d kubeconfig get {{ cluster_name }}
+  changed_when: no
+  register: result
+
+- name: Overwrites kubeconfig
+  when: kubeconfig is defined
+  connection: local
+  copy:
+    content: "{{result.stdout}}" 
+    dest: "{{ kubeconfig }}"

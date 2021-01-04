@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - debug:
+        var: cluster_name
+    - name: "Include k3d_cluster_create"
+      include_role:
+        name: "k3d_cluster_create"
