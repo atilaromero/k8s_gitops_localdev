@@ -4,4 +4,3 @@
     - local_requirements
     - k3d_cli_install
     - argocd_cli_install
-    - helm_cli_install

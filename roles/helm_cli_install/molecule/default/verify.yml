@@ -1,9 +1,0 @@
----
-# This is an example playbook to execute Ansible tests.
-
-- name: Verify
-  hosts: all
-  gather_facts: no
-  tasks:
-  - name: Try to run helm
-    command: helm version

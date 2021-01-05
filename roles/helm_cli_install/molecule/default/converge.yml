@@ -1,8 +1,0 @@
----
-- name: Converge
-  hosts: all
-  gather_facts: no
-  tasks:
-    - name: "Include helm_cli_install"
-      include_role:
-        name: "helm_cli_install"

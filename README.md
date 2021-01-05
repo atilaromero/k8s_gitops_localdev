@@ -10,7 +10,8 @@ Having a local CICD environment is much faster and practical than having to push
 
 Ansible will install the basic system:
 
-1. Install a local k8s cluster using k3d
+1. Install a local k8s cluster using k3d.
+  *Attention: It overwrites the local .kube/conf*
 
 2. Export the local k8s_gitops_localdev repository in the cluster, creating a read-only git server
 
@@ -18,7 +19,7 @@ Ansible will install the basic system:
 
 4. Make ArgoCD watch the local repo
 
-Hereafter, any application to be installed in k8s should be added by modifying the local repo and using `argocd app sync argocd_apps`
+Hereafter, any application to be installed in k8s should be added by modifying the local repo.
 
 
 ## Requirements
@@ -28,3 +29,6 @@ Hereafter, any application to be installed in k8s should be added by modifying t
 - Docker
 
 ## Installation
+
+    ansible-playbook install_tools_localhost.yml
+    ansible-playbook bootstrap_k8s.yml
