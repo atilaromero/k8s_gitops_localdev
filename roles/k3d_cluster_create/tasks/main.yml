@@ -14,7 +14,7 @@
   changed_when: no
   register: result
 
-- name: Overwrites kubeconfig
+- name: Overwrite kubeconfig
   when: kubeconfig is defined
   connection: local
   copy:
