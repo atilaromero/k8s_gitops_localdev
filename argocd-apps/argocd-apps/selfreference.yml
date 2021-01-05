@@ -1,3 +1,9 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argocd-apps
+---  
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -13,4 +19,6 @@ spec:
     server: https://kubernetes.default.svc
     namespace: argocd-apps
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: true
