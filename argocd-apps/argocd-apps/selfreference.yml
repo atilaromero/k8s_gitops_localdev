@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: git://daemon.localgit.svc.cluster.local/
     targetRevision: HEAD
-    path: k8s_resources/argocd-apps
+    path: argocd-apps/argocd-apps
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd-apps

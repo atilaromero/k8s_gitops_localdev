@@ -9,9 +9,9 @@
 - name: Install local git server deployment
   community.kubernetes.k8s:
     namespace: '{{ namespace }}'
-    src: '{{ role_path }}/../../k8s_resources/local-git-server/deployment.yml'
+    src: '{{ role_path }}/../../argocd-apps/local-git-server/deployment.yml'
 
 - name: Install local git server service
   community.kubernetes.k8s:
     namespace: '{{ namespace }}'
-    src: '{{ role_path }}/../../k8s_resources/local-git-server/svc.yml'
+    src: '{{ role_path }}/../../argocd-apps/local-git-server/svc.yml'

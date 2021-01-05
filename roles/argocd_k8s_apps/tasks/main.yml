@@ -9,4 +9,4 @@
 - name: Install application
   community.kubernetes.k8s:
     namespace: '{{ namespace }}'
-    src: '{{ role_path }}/../../k8s_resources/argocd-apps/selfreference.yml'
+    src: '{{ role_path }}/../../argocd-apps/argocd-apps/selfreference.yml'
