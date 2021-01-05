@@ -1,0 +1,28 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: delegated
+platforms:
+  - name: cluster
+    groups:
+      - k8s
+provisioner:
+  name: ansible
+  inventory:
+    group_vars:
+      all:
+        cluster_name: ${CLUSTER_NAME:-molecule-test-argocd-apps}
+        kubeconfig: ${MOLECULE_EPHEMERAL_DIRECTORY}/kubeconfig
+        namespace: ${NAMESPACE:-argocd}
+  env:
+    K8S_AUTH_KUBECONFIG: ${MOLECULE_EPHEMERAL_DIRECTORY}/kubeconfig
+    KUBECONFIG: ${MOLECULE_EPHEMERAL_DIRECTORY}/kubeconfig
+  config_options:
+    defaults:
+      interpreter_python: auto_silent
+      callback_whitelist: profile_tasks, timer, yaml
+    ssh_connection:
+      pipelining: True
+verifier:
+  name: ansible

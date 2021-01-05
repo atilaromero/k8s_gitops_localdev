@@ -1,0 +1,9 @@
+---
+- name: Create
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+    - k3d_cluster_create
+    - argocd_k8s_install
+    - localgit_k8s_install
