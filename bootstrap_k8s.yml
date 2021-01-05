@@ -2,14 +2,15 @@
 - hosts: localhost
   connection: local
   gather_facts: no
+  vars:
+    cluster_name: cicd
   roles:
     - role: k3d_cluster_create
-      cluster_name: cicd
       # overwrites local .kube/config
       kubeconfig: ${HOME}/.kube/config
     - role: argocd_k8s_install
-      cluster_name: cicd
       namespace: argocd
     - role: localgit_k8s_install
-      cluster_name: cicd
       namespace: localgit
+    - role: argocd_k8s_apps
+      namespace: argocd
