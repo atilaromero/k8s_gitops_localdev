@@ -18,9 +18,13 @@ Ansible will install the basic system:
 
 4. Make ArgoCD watch the local repo
 
-Hereafter, any application that should be installed in k8s should be added by modifying the local repo.
+Hereafter, any application to be installed in k8s should be added by modifying the local repo and using `argocd app sync argocd_apps`
 
 
 ## Requirements
+
+- Ansible
+
+- Docker
 
 ## Installation
