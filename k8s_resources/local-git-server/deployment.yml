@@ -2,15 +2,15 @@
 apiVersion: v1
 kind: Deployment
 metadata:
-  name: local-git-server
+  name: daemon
 spec:
   selector:
     matchLabels:
-      app: local-git-server
+      app: daemon
   template:
     metadata:
       labels:
-        app: local-git-server
+        app: daemon
     spec:
       containers:
         - image: bitnami/git
