@@ -1,7 +1,5 @@
 # k8s_gitops_localdev
 
-WIP - Not ready yet
-
 This project creates a local CICD environment for Kubernetes, using the GitOps paradigm: everything should be under version control, including k8s and ArgoCD install steps and configuration.
 
 Having a local CICD environment is much faster and practical than having to push to some external server to only then find out if the tests passed or not.
