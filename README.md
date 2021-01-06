@@ -30,6 +30,14 @@ It will:
 
 4. Make ArgoCD watch the local repo
 
-Hereafter, any application to be installed in k8s should be added by modifying the local repo.
+Hereafter, any application to be installed in k8s should be added by modifying the local repo, particularly the argocd-apps/argocd-apps folder.
 
+## To add a new application
 
+1. Create a new ArgoCD application file in argocd-apps/argocd-apps. selfreference.yml can be used as an example.
+
+2. Commit the change in the local repo (no need to push to github).
+
+3. Auto-refresh occurs every 3 minutes. To trigger it manually,  you have to use `kubectl port-forward svc/argocd-server -n argocd 8080:443`,  `argocd login localhost:8080`, and `argocd app sync argocd-apps`. The user is 'admin' and the password is the name of the argocd-server pod.
+
+TODO: include some sample CI workflows
