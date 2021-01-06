@@ -1,64 +1,29 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: openfaas
-  annotations:
-    linkerd.io/inject: enabled
-    config.linkerd.io/skip-inbound-ports: "4222"
-    config.linkerd.io/skip-outbound-ports: "4222"
-  labels:
-    role: openfaas-system
-    access: openfaas-system
-    istio-injection: enabled
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: openfaas-fn
-  annotations:
-    linkerd.io/inject: enabled
-    config.linkerd.io/skip-inbound-ports: "4222"
-    config.linkerd.io/skip-outbound-ports: "4222"
-  labels:
-    istio-injection: enabled
-    role: openfaas-fn
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: basic-auth
-  namespace: openfaas
-type: generic
-stringData:
-  basic-auth-user: admin
-  basic-auth-password: devpassword
----
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: openfaas
+  name: argocd-apps
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: git://daemon.localgit.svc.cluster.local/
     targetRevision: HEAD
-    path: argocd-apps/openfaas
-    helm:
-      version: v3
-      valueFiles:
-        - values.yaml
+    path: argocd-apps/argocd-apps
+    # Uncomment this if target uses helm:
+    # helm:
+    #   valueFiles:
+    #     - values.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: openfaas
+    namespace: argocd-apps
   syncPolicy:
     automated:
       prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
       selfHeal: true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected ( false by default ).
       allowEmpty: false # Allows deleting all application resources during automatic syncing ( false by default ).
     syncOptions:     # Sync options which modifies sync behavior
-    - Validate=true # disables resource validation (equivalent to 'kubectl apply --validate=false') ( true by default ).
-    - CreateNamespace=true # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster.
+    - Validate=true
+    - CreateNamespace=true
     retry:
       limit: 0 # number of failed sync attempt retries; unlimited number of attempts if less than 0
       backoff:

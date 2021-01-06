@@ -5,7 +5,7 @@
   register: result
 
 - name: Create cluster
-  command: k3d cluster create {{ cluster_name }} -v {{ shared_dir }}:/mnt/hostpath
+  command: k3d cluster create {{ cluster_name }} -v {{ shared_dir }}:/mnt/hostpath --agents {{ agents }}
   when: cluster_name not in result.stdout_lines
 
 - name: Generate kubeconfig content

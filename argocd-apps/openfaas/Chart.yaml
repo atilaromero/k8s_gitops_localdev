@@ -1,1 +1,8 @@
+apiVersion: v2
 name: openfaas
+version: 6.2.3
+
+dependencies:
+- name: openfaas
+  version: 6.2.3
+  repository: https://openfaas.github.io/faas-netes/
