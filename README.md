@@ -22,8 +22,7 @@ This will install the basic resources in k8s:
 
 It will:
 
-1. Install a local k8s cluster using k3d.
-  *Attention: It overwrites the local .kube/conf*
+1. Install a local k8s cluster using k3d. **Warning: It overwrites the local .kube/conf**
 
 2. Export the local k8s_gitops_localdev repository in the cluster, creating a read-only git server
 
