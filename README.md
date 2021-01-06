@@ -4,9 +4,23 @@ This project creates a local CICD environment for Kubernetes, using the GitOps p
 
 Having a local CICD environment is much faster and practical than having to push to some external server to only then find out if the tests passed or not.
 
-## Overview
+## Requirements
 
-Ansible will install the basic system:
+- Ansible
+
+- Docker
+
+## Installation
+
+This will install pip requirements, k3d, and argocd in localhost:
+
+    ansible-playbook install_tools_localhost.yml
+
+This will install the basic resources in k8s:
+
+    ansible-playbook bootstrap_k8s.yml
+
+It will:
 
 1. Install a local k8s cluster using k3d.
   *Attention: It overwrites the local .kube/conf*
@@ -20,13 +34,3 @@ Ansible will install the basic system:
 Hereafter, any application to be installed in k8s should be added by modifying the local repo.
 
 
-## Requirements
-
-- Ansible
-
-- Docker
-
-## Installation
-
-    ansible-playbook install_tools_localhost.yml
-    ansible-playbook bootstrap_k8s.yml
