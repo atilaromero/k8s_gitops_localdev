@@ -3,8 +3,8 @@ openfaas:
 
   async: true
 
-  exposeServices: true
-  serviceType: LoadBalancer
+  exposeServices: false
+  serviceType: ClusterIP
   httpProbe: true               # Setting to true will use HTTP for readiness and liveness probe on the OpenFaaS system Pods (incompatible with Istio < 1.1.5)
   rbac: true
   clusterRole: false            # Set to true to have OpenFaaS administrate multiple namespaces
@@ -157,7 +157,7 @@ openfaas:
 
   # ingress configuration
   ingress:
-    enabled: false
+    enabled: true
     # Used to create Ingress record (should be used with exposeServices: false).
     hosts:
       - host: gateway.openfaas.local  # Replace with gateway.example.com if public-facing
@@ -166,7 +166,7 @@ openfaas:
         path: /
     annotations:
       kubernetes.io/ingress.class: nginx
-    tls:
+    # tls:
       # Secrets must be manually created in the namespace.
 
   # ingressOperator (optional) – component to have specific FQDN and TLS for Functions

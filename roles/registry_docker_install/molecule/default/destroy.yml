@@ -1,0 +1,17 @@
+---
+- name: Destroy
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  no_log: "{{ molecule_no_log }}"
+  tasks:
+    - name: Stop container
+      community.general.docker_container:
+        name: '{{ registry_name }}'
+        state: stopped
+      failed_when: False
+    
+    - name: Remove container
+      community.general.docker_container:
+        name: '{{ registry_name }}' 
+        state: absent

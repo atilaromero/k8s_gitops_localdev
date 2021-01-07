@@ -1,0 +1,4 @@
+---
+registry_name: registry.localhost
+registry_port: 5000
+local_registry: '{{ role_path }}/../../local_registry/'

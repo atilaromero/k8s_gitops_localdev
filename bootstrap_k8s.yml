@@ -5,6 +5,7 @@
   vars:
     cluster_name: cicd
   roles:
+    - role: registry_docker_install
     - role: k3d_cluster_create
       # overwrites local .kube/config
       kubeconfig: ${HOME}/.kube/config

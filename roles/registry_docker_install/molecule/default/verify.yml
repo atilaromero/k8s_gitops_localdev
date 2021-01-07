@@ -1,0 +1,16 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+  - name: List content
+    command: curl localhost:{{ registry_port }}/v2/
+    changed_when: False
+    register: result
+
+  - name: Check content
+    assert:
+      that: result.stdout == "{}"

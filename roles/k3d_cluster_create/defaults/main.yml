@@ -1,5 +1,8 @@
 shared_dir: '{{ role_path }}/../..'
 agents: 3
+api_port: 127.0.0.1:6443
+traefik_http_port: 80
+traefik_https_port: 443
 
 # kubeconfig is the path for the local kube/config file
 # if set, it will be overwritten

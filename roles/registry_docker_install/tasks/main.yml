@@ -1,0 +1,11 @@
+- name: Create a registry mirror
+  community.general.docker_container:
+    name: '{{ registry_name }}'
+    image: registry:2
+    volumes:
+      - '{{ local_registry }}:/var/lib/registry'
+    restart_policy: always
+    ports:
+     - "{{ registry_port }}:5000"
+    env:
+      REGISTRY_PROXY_REMOTEURL: https://registry-1.docker.io

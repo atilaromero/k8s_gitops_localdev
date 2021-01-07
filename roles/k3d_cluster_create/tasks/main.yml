@@ -5,7 +5,15 @@
   register: result
 
 - name: Create cluster
-  command: k3d cluster create {{ cluster_name }} -v {{ shared_dir }}:/mnt/hostpath --agents {{ agents }}
+  command: |
+    k3d cluster create {{ cluster_name | quote }} \
+      -v {{ shared_dir | quote }}:/mnt/hostpath \
+      -v {{ role_path }}/files/registries.yaml:/etc/rancher/k3s/registries.yaml \
+      --agents {{ agents | quote }} \
+      --api-port {{ api_port | quote }} \
+      -p {{ traefik_http_port | quote }}:80@loadbalancer \
+      -p {{ traefik_https_port | quote }}:443@loadbalancer
+
   when: cluster_name not in result.stdout_lines
 
 - name: Generate kubeconfig content

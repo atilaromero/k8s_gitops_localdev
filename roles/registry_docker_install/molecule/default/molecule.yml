@@ -1,0 +1,23 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: delegated
+platforms:
+  - name: docker
+provisioner:
+  name: ansible
+  inventory:
+    group_vars:
+      all:
+        registry_name: molecule-test-registry
+        registry_port: 15000
+        local_registry: ${MOLECULE_EPHEMERAL_DIRECTORY}/local_registry
+  config_options:
+    defaults:
+      interpreter_python: auto_silent
+      callback_whitelist: profile_tasks, timer, yaml
+    ssh_connection:
+      pipelining: True
+verifier:
+  name: ansible

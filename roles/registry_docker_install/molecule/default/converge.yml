@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: "Include registry_docker_install"
+      include_role:
+        name: "registry_docker_install"
