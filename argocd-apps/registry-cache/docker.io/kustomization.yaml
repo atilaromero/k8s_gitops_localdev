@@ -1,0 +1,5 @@
+bases:
+- ../base
+namePrefix: dockerio-
+commonLabels:
+  app: dockerio

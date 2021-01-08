@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cache
+spec:
+  selector:
+    matchLabels:
+      app: dockerio
+  template:
+    metadata:
+      labels:
+        app: dockerio
+    spec:
+      containers:
+        - image: registry:2
+          name: main
+          ports:
+            - name: registry
+              containerPort: 5000
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /var/lib/registry/
+              name: hostvol
+          env:
+            - name: REGISTRY_PROXY_REMOTEURL
+              value: https://registry-1.docker.io
+      volumes:
+        - name: hostvol
+          hostPath:
+            path: /mnt/hostpath/local_registry/inside_k8s/docker.io

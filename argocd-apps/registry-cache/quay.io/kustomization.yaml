@@ -1,0 +1,7 @@
+bases:
+- ../base
+namePrefix: quayio-
+commonLabels:
+  app: quayio
+patchesStrategicMerge:
+- patch.yaml

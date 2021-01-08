@@ -1,0 +1,7 @@
+bases:
+- ../base
+namePrefix: gcrio-
+commonLabels:
+  app: gcrio
+patchesStrategicMerge:
+- patch.yaml

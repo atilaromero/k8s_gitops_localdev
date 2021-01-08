@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cache
+spec:
+  template:
+    spec:
+      containers:
+        - name: main
+          env:
+            - name: REGISTRY_PROXY_REMOTEURL
+              value: https://gcr.io
+      volumes:
+        - name: hostvol
+          hostPath:
+            path: /mnt/hostpath/local_registry/inside_k8s/gcr.io

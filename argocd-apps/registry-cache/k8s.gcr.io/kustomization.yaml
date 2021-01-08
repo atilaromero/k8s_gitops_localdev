@@ -1,0 +1,7 @@
+bases:
+- ../base
+namePrefix: k8sgcrio-
+commonLabels:
+  app: k8sgcrio
+patchesStrategicMerge:
+- patch.yaml
