@@ -10,7 +10,7 @@ spec:
   ports:
     - name: registry
       port: 5000
-      targetPort: git
+      targetPort: registry
       protocol: TCP
   selector:
     app: dockerio
