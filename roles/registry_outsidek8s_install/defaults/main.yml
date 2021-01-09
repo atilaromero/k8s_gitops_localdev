@@ -1,4 +1,4 @@
 ---
 registry_name: registry.localhost
 registry_port: 5000
-local_registry: '{{ role_path }}/../../local_registry/'
+local_registry: '{{ role_path }}/../../local_registry/outside_k8s/docker.io'
