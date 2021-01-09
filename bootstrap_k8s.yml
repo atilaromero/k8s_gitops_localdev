@@ -6,12 +6,17 @@
     cluster_name: cicd
   roles:
     - role: registry_docker_install
+
     - role: k3d_cluster_create
-      # overwrites local .kube/config
+    
+    - role: overwrite_local_kubeconfig
       kubeconfig: ${HOME}/.kube/config
+    
     - role: localgit_k8s_install
       namespace: localgit
+    
     - role: argocd_k8s_install
       namespace: argocd
+    
     - role: argocd_k8s_apps
       namespace: argocd

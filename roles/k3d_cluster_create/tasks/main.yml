@@ -15,16 +15,3 @@
       -p {{ traefik_https_port | quote }}:443@loadbalancer
 
   when: cluster_name not in result.stdout_lines
-
-- name: Generate kubeconfig content
-  when: kubeconfig is defined
-  command: k3d kubeconfig get {{ cluster_name }}
-  changed_when: no
-  register: result
-
-- name: Overwrite kubeconfig
-  when: kubeconfig is defined
-  connection: local
-  copy:
-    content: "{{result.stdout}}" 
-    dest: "{{ kubeconfig }}"

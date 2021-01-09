@@ -1,0 +1,2 @@
+# kubeconfig is the path for the local kube/config file
+kubeconfig: ${HOME}/.kube/config

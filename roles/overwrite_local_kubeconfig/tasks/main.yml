@@ -1,0 +1,11 @@
+---
+- name: Generate kubeconfig content
+  command: k3d kubeconfig get {{ cluster_name }}
+  changed_when: no
+  register: result
+
+- name: Overwrite kubeconfig
+  connection: local
+  copy:
+    content: "{{result.stdout}}" 
+    dest: "{{ kubeconfig }}"
