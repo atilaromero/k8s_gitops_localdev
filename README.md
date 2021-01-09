@@ -22,13 +22,17 @@ This will install the basic resources in k8s:
 
 It will:
 
-1. Install a local k8s cluster using k3d. **Warning: It overwrites the local .kube/conf**
+1. Optionaly install a pull through registry cache in docker, but outside k8s
 
-2. Export the local k8s_gitops_localdev repository in the cluster, creating a read-only git server
+2. Install a local k8s cluster using k3d.
 
-3. Install ArgoCD in the cluster 
+3. Overwrite the local .kube/conf
 
-4. Make ArgoCD watch the local repo
+4. Export the local k8s_gitops_localdev repository in the cluster, creating a read-only git server
+
+5. Install ArgoCD in the cluster 
+
+6. Make ArgoCD watch the local repo
 
 Hereafter, any application to be installed in k8s should be added by modifying the local repo, particularly the argocd-apps/argocd-apps folder.
 
