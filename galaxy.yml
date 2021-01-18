@@ -1,5 +1,5 @@
 namespace: atilaromero
-name: ansible_k8s_gitops
+name: k8s_gitops_localdev
 version: 1.0.0
 readme: README.md
   - Atila Romero <atilaromero@gmail.com>
